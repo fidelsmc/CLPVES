@@ -18,26 +18,26 @@ mensaje = """
 print(mensaje)
 
 try:
-print("Consultando USD/CLP...")
-respuesta2 = urllib.request.urlopen(url2)
-datapeso = respuesta2.read()
-datapeso = datapeso.decode(encoding='UTF-8', errors='replace')
-data2 = json.loads(datapeso)
-peso = ((data2['dolar']['valor']))
-print("USD/CLP: " + str(peso))
+  print("Consultando USD/CLP...")
+  respuesta2 = urllib.request.urlopen(url2)
+  datapeso = respuesta2.read()
+  datapeso = datapeso.decode(encoding='UTF-8', errors='replace')
+  data2 = json.loads(datapeso)
+  peso = ((data2['dolar']['valor']))
+  print("USD/CLP: " + str(peso))
 except urllib.error.URLError:
-print("**** Pagina de mindicador.cl no encontrada ****")
+  print("**** Pagina de mindicador.cl no encontrada ****")
 
 try:
-print("Consultando a Dolartoday...")
-respuesta1 = urllib.request.urlopen(url)
-datadolar = respuesta1.read()
-datadolar = datadolar.decode(encoding='UTF-8', errors='replace')
-data = json.loads(datadolar)
-dolar = ((data['USD']['promedio']))
-print("USD/VEF: " + str(dolar))
+  print("Consultando a Dolartoday...")
+  respuesta1 = urllib.request.urlopen(url)
+  datadolar = respuesta1.read()
+  datadolar = datadolar.decode(encoding='UTF-8', errors='replace')
+  data = json.loads(datadolar)
+  dolar = ((data['USD']['promedio']))
+  print("USD/VEF: " + str(dolar))
 except urllib.error.URLError:
-print("**** Pagina de DolarToday no encontrada ****")
+  print("**** Pagina de DolarToday no encontrada ****")
 
 vefCLP = round(dolar / peso, 2)
 print("#### TASA CLP/VEF ####")
